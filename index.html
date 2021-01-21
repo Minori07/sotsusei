@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+    <title>卒業制作</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+  </head>
+  <body>
+    <div class="sound-check">
+        <h2>サウンドチェック</h2>
+        <p>
+            下のボタンを押して着信音が出ることの確認を行ってください。<br>
+            また普段着信がきた時の音量に、iPhone左側にあるボタンで調節してください。
+        </p>
+        <h3 onclick="soundCheck()">音開始</h3>
+        <h3 onclick="stopSound()">音停止</h3>
+    </div>
+    <h2>下の開始を押したら20~60秒後に仮想電話がかかってきます。</h2>
+    <h3 onclick="call_timer()" class="start-btn">開始</h3>
+    <!-- <iframe src="https://si-coding.net/sudoku5.html" frameborder="0"></iframe> -->
+    <div id="call_cont">
+        <h1 id="call_name">090-XXXX-XXXX</h1>
+        <div class="slide-icon-wrap">
+          <img src="./images/slide-bar@2x.png" alt="" />
+          <div class="slide-call-icon-wrap" id="icon">
+            <img src="./images/call-icon@2x.png" alt="" />
+          </div>
+          <div class="frick-icon-wrap">
+            <img src="./images/frick_down@4x.png" alt="">
+          </div>
+        </div>
+        <div class="hide-reply">
+            <img src="images/reply-set@4x.png" alt="">
+        </div>
+        <div class="hide-icons none">
+            <div class="nocall-icon-wrap">
+                <img src="images/no-call@2x.png" alt="">
+            </div>
+            <div class="other-icons">
+                <div class="other-icon-wrap">
+                    <img src="images/alerm@2x.png" alt="">
+                    <p class="other-disc">あとで通知</p>
+                </div>
+                <div class="other-icon-wrap">
+                    <img src="images/mess@2x.png" alt="">
+                    <p class="other-disc">メッセージ</p>
+                </div>
+            </div>
+        </div>
+      </div>
+    <script src="main.js"></script>
+  </body>
+</html>
