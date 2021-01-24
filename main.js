@@ -115,12 +115,12 @@ function reset() {
   call_tm = 0;
   $("#call_cont").removeClass("reply");
   $("#call_cont").css({
-        height: "130px",
+        "height": "130px",
         top: "-130px",
         left: "2.5vw",
         width: "95vw",
         "border-radius": "20px",
-        opacity: 0
+        opacity: 0,
     });
     $(".hide-icons").addClass("none");
     $("#icon").css({left: "calc(23% + 4px)"});
