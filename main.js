@@ -59,8 +59,13 @@ function call_timer(){
       });
       calling = true;
       sound.play();
-      $("#call_cont").css({top: "10px"});
-      $("#call_cont").css({opacity: 1});
+      $(".hide-icons").addClass("none");
+      $("#call_cont").css({
+        top: "10px",
+        opacity: 1,
+        height: "130px",
+        visibility: "visible"
+      });
       timeCount();
       return;
     }
@@ -115,12 +120,13 @@ function reset() {
   call_tm = 0;
   $("#call_cont").removeClass("reply");
   $("#call_cont").css({
-        "height": "130px",
+        height: "130px",
         top: "-130px",
         left: "2.5vw",
         width: "95vw",
         "border-radius": "20px",
         opacity: 0,
+        visibility: "hidden"
     });
     $(".hide-icons").addClass("none");
     $("#icon").css({left: "calc(23% + 4px)"});
