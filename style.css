@@ -5,6 +5,67 @@
   font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", sans-serif;
 }
 
+h1,
+h2 {
+  text-align: center;
+}
+
+.header-sp-icon-wrap {
+  position: fixed;
+  top: 5px;
+  right: 3vw;
+  width: 30px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 0;
+  z-index: 8;
+}
+
+.header-sp-icon-bar1,
+.header-sp-icon-bar3 {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background-color: #5262bc;
+  border-radius: 1px;
+  transform-origin: center;
+  transition: all 0.3s ease-out;
+}
+
+.is-open .header-sp-icon-bar1 {
+  transform: translateY(7.5px) rotateZ(45deg);
+  background-color: white;
+}
+.is-open .header-sp-icon-bar3 {
+  transform: translateY(-7.5px) rotateZ(-45deg);
+  background-color: white;
+}
+
+.header-menu {
+  background-color: #5262bc;
+  color: white;
+  position: fixed;
+  top: 0;
+  right: -50vw;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 7;
+  transition: all 0.25s ease-out;
+}
+
+li {
+  width: 50vw;
+  height: 70px;
+  line-height: 70px;
+  border-bottom: solid 1px white;
+  padding: 0 20px;
+}
+
 .start-btn {
   width: 180px;
   height: 50px;
@@ -46,6 +107,7 @@ img {
   color: white;
   /* opacity: 0; */
   transition: 0.3s;
+  z-index: 9;
 }
 
 #call_name {
@@ -147,4 +209,61 @@ img {
 .reply .hide-reply {
   height: auto;
   visibility: visible;
+}
+
+.sound-check {
+  background-color: rgb(48, 44, 43, 0.95);
+  color: white;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: calc(100vw - 20px);
+  height: calc(100vh - 20px);
+  padding: 30px;
+  border-radius: 20px;
+  z-index: 10;
+}
+
+.bl-btn {
+  width: 180px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #5262bc;
+  /* margin: 20px auto; */
+  text-align: center;
+  line-height: 50px;
+  color: white;
+  margin: 10px auto;
+}
+
+.rd-btn {
+  width: 180px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #ec5b3e;
+  /* margin: 20px auto; */
+  text-align: center;
+  line-height: 50px;
+  color: white;
+  margin: 10px auto;
+}
+
+.notice-icon-wrap {
+  position: absolute;
+  height: 6vw;
+  top: 2vw;
+  left: 2vw;
+  z-index: 10;
+}
+
+.game-cont {
+  position: absolute;
+  top: 60px;
+  height: calc(95vh - 60px);
+  width: 100vw;
+  z-index: 1;
+}
+
+.main-cont {
+  margin-top: 60px;
 }

@@ -10,49 +10,93 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      UnityLoader.instantiate("unityContainer", "Build/web_RunGame.json");
+    </script>
   </head>
   <body>
+      <header>
+        <div class="notice-icon-wrap none" onclick="setDisplay()">
+            <img src="" alt="放置中アイコン" id="notice">
+        </div>
+        <div class="header-sp-icon-wrap">
+          <div class="header-sp-icon-bar1"></div>
+          <div class="header-sp-icon-bar3"></div>
+        </div>
+        <ul class="header-menu">
+          <li></li>
+          <li onclick="contChange(0)">卒業制作について</li>
+          <li onclick="contChange(1)">ゲーム</li>
+        </ul>
+      </header>
+
     <div class="sound-check">
+        <h1>
+            二重課題を考慮した<br>
+            電話通知デザイン
+        </h1>
+        <p>
+            ここではスマートフォン操作中に電話がかかってくるという二重課題状況を体験することができます。<br><br>
+        </p>
         <h2>サウンドチェック</h2>
         <p>
             下のボタンを押して着信音が出ることの確認を行ってください。<br>
             また普段着信がきた時の音量に、iPhone左側にあるボタンで調節してください。
         </p>
-        <h3 onclick="soundCheck()">音開始</h3>
-        <h3 onclick="stopSound()">音停止</h3>
+        <h3 onclick="soundCheck()" class="bl-btn">音開始</h3>
+        <h3 onclick="stopSound()" class="rd-btn">音停止</h3>
+        <p>
+            確認できたら下のボタンから開始してください。
+            20~60秒間隔で仮想電話がかかってきます。
+        </p>
+        <h3 onclick="call_timer()" class="rd-btn">開始</h3>
     </div>
-    <h2>下の開始を押したら20~60秒後に仮想電話がかかってきます。</h2>
-    <h3 onclick="call_timer()" class="start-btn">開始</h3>
-    <!-- <iframe src="https://si-coding.net/sudoku5.html" frameborder="0"></iframe> -->
+
     <div id="call_cont">
         <h1 id="call_name">090-XXXX-XXXX</h1>
         <div class="slide-icon-wrap">
-          <img src="./images/slide-bar@2x.png" alt="" />
+          <img src="./images/slide-bar@2x.png" alt="スライドバー" />
           <div class="slide-call-icon-wrap" id="icon">
-            <img src="./images/call-icon@2x.png" alt="" />
+            <img src="./images/call-icon@2x.png" alt="応答アイコン" />
           </div>
           <div class="frick-icon-wrap">
-            <img src="./images/frick_down@4x.png" alt="">
+            <img src="./images/frick_down@4x.png" alt="フリックアイコン">
           </div>
         </div>
         <div class="hide-reply">
-            <img src="images/reply-set@4x.png" alt="">
+            <img src="images/reply-set@4x.png" alt="応答時のメニュー">
         </div>
         <div class="hide-icons none">
             <div class="nocall-icon-wrap">
-                <img src="images/no-call@2x.png" alt="">
+                <img src="images/no-call@2x.png" alt="拒否アイコン">
             </div>
             <div class="other-icons">
                 <div class="other-icon-wrap">
-                    <img src="images/alerm@2x.png" alt="">
+                    <img src="images/alerm@2x.png" alt="あとで通知">
                     <p class="other-disc">あとで通知</p>
                 </div>
                 <div class="other-icon-wrap">
-                    <img src="images/mess@2x.png" alt="">
+                    <img src="images/mess@2x.png" alt="メッセージ">
                     <p class="other-disc">メッセージ</p>
                 </div>
             </div>
         </div>
+      </div>
+
+      <div class="main-cont">
+        <p class="attention">
+            ※このページでは卒業制作の説明を行います。
+            右上のメニューからゲームに切り替えることができます。
+            中断しやすいタスク（現ページ）と中断しにくいタスク（ゲーム）の２パターンの二重課題状況を体験してみてください。
+        </p>
+        <section>
+            <h4>背景・目的</h4>
+            <p>現在スマートフォンが普及し、その便利さから多くの人がスマートフォンから様々な情報を得ています。そんな中、ウェブの閲覧中に別のアプリからの通知が来たり、電話の着信に対応したりという場面はよく起こります。このような別々のタスクが同時多発的に起こる事象を二重課題と言います。</p>
+        </section>
+      </div>
+      <div class="game-cont none">
+        <div id="unityContainer" style="width: 100%; height: 100%;"></div>
       </div>
     <script src="main.js"></script>
   </body>

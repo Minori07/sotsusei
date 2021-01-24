@@ -4,19 +4,48 @@ var random_count = 2;
 var sound = new Audio("./curcuit.mp3");
 var call_tm = 0;
 var calling = true;
+var notice_Icons = new Array(
+    "./images/notice0@4x.png",
+    "./images/notice1@4x.png",
+    "./images/notice2@4x.png",
+    "./images/notice3@4x.png"
+);
+var no_c = 0;
+var notice = false;
 
 $(function () {
   $("a").click(function () {
     location.href = $(this).attr("href");
     return false;
-  });
+  });//ホーム追加でsafari起動させない
+
   setSlide("#icon");
   setSwipe("#call_cont");
   setTouch(".nocall-icon-wrap");
   setTouchOther(".other-icon-wrap");
-}); //ホーム追加でsafari起動させない
+
+  $(".header-sp-icon-wrap").click(function () {
+    if ($(".header-sp-icon-wrap").hasClass("is-open")) {
+      $(".header-sp-nav").css("display", "none");
+      $(".header-sp-icon-wrap").removeClass("is-open");
+      $(".header-menu").css({"right":"-50vw"});
+    } else {
+      $(".header-sp-nav").css("display", "block");
+      $(".header-sp-icon-wrap").addClass("is-open");
+      $(".header-menu").css({"right":"0"});
+    }
+  });
+
+  $(".header-menu").click(function () {
+    $(".header-sp-nav").css("display", "none");
+    $(".header-sp-icon-wrap").removeClass("is-open");
+    $(".header-menu").css({"right":"-50vw"});
+  });
+});
 
 function call_timer(){
+    sound.currentTime = 0;
+    $(".sound-check").addClass("none");
     if(!random){
         randomCount();
     }
@@ -41,12 +70,15 @@ function call_timer(){
 function timeCount() {
   if (calling) {
     call_tm += 1;
-    setTimeout("timeCount()", 10);
+    setTimeout("timeCount()", 1000);
+  }
+  if(call_tm >= 60){
+      stopSound(2);
   }
 }
 
 function randomCount(){
-    // random_count = Math.round(Math.random() * 20) + 40; //* 幅 )+ 最小
+    random_count = Math.round(Math.random() * 20) + 40; //* 幅 )+ 最小
     random = true;
     console.log(random_count);
 }
@@ -55,6 +87,8 @@ function stopSound(n) {
   sound.repeat = false;
   sound.pause();
   calling = false;
+  notice = false;
+  no_c = 0;
   if (n == "0") {
     console.log("拒否");
     reset();
@@ -69,7 +103,7 @@ function stopSound(n) {
     });
     $("#call_cont").addClass("reply");
     $(".hide-icons").removeClass("none");
-  } else {
+  } else if(n == "2") {
     console.log("その他"); 
     reset();
   }
@@ -79,19 +113,18 @@ function reset() {
   count = 0;
   random = false;
   call_tm = 0;
-  sound.currentTime = 0;
+  $("#call_cont").removeClass("reply");
   $("#call_cont").css({
+        height: "130px",
         top: "-130px",
         left: "2.5vw",
         width: "95vw",
-        height: "130px",
         "border-radius": "20px",
         opacity: 0
     });
-    $("#call_cont").removeClass("reply");
     $(".hide-icons").addClass("none");
     $("#icon").css({left: "calc(23% + 4px)"});
-//   call_timer();
+  call_timer();
 }
 
 //上下
@@ -123,7 +156,12 @@ function setSwipe(elem) {
       // 下から上にスワイプ
       document.getElementById("call_cont").style.top = "-100px";
       document.getElementById("call_cont").style.opacity = 0;
-      stopSound(2);
+      if(calling && !notice){
+        notice = true;
+      }
+      noticeIcon()
+    //   sound.repeat = false;
+    //   sound.pause();
     } else if (startY < moveY && startY + dist < moveY) {
       // 上から下にスワイプ
       document.getElementById("call_cont").style.height = "190px";
@@ -201,4 +239,39 @@ function soundCheck(){
         }
     });
     sound.play();
+}
+
+function noticeIcon(){
+    if(no_c%5 == 1){
+        document.getElementById("notice").src = notice_Icons[1];
+    }else if(no_c%5 == 2){
+        document.getElementById("notice").src = notice_Icons[2];
+    }else if(no_c%5 == 3){
+        document.getElementById("notice").src = notice_Icons[3];
+    }else{
+        document.getElementById("notice").src = notice_Icons[0];
+    }
+    if(notice){
+        no_c +=1;
+        setTimeout("noticeIcon()", 250);
+        $(".notice-icon-wrap").removeClass("none");
+    }else{
+        $(".notice-icon-wrap").addClass("none");
+    }
+}
+
+function setDisplay(){
+    $("#call_cont").css({top: "10px"});
+    $("#call_cont").css({opacity: 1});
+    notice = false;
+}
+
+function contChange(n){
+  if($(".main-cont").hasClass("none") && n == "0"){
+    $(".main-cont").removeClass("none");
+    $(".game-cont").addClass("none");
+  }else if($(".game-cont").hasClass("none") && n == "1"){
+    $(".main-cont").addClass("none");
+    $(".game-cont").removeClass("none");
+  }
 }
