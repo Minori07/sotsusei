@@ -275,3 +275,7 @@ function contChange(n){
     $(".game-cont").removeClass("none");
   }
 }
+
+function noIntarval(){
+  random_count = 0;
+}
