@@ -249,7 +249,7 @@ img {
 }
 
 .notice-icon-wrap {
-  position: absolute;
+  position: fixed;
   height: 6vw;
   top: 2vw;
   left: 2vw;
