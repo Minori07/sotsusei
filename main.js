@@ -23,6 +23,7 @@ $(function () {
   setSwipe("#call_cont");
   setTouch(".nocall-icon-wrap");
   setTouchOther(".other-icon-wrap");
+  setTouchFrick(".frick-icon-wrap");
 
   $(".header-sp-icon-wrap").click(function () {
     if ($(".header-sp-icon-wrap").hasClass("is-open")) {
@@ -234,6 +235,19 @@ function setTouchOther(elem){
   });
   t.addEventListener("touchend", function (e) {
     stopSound(2);
+  });
+}
+
+function setTouchFrick(elem){
+  let t = document.querySelector(elem);
+  t.addEventListener("touchstart", function (e) {
+  });
+  t.addEventListener("touchmove", function (e) {
+  });
+  t.addEventListener("touchend", function (e) {
+    document.getElementById("call_cont").style.height = "190px";
+    $(".hide-icons").removeClass("none");
+    $(".hide-icons").css({opacity:1});
   });
 }
 
