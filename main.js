@@ -130,7 +130,7 @@ function reset() {
         visibility: "hidden"
     });
     $(".hide-icons").addClass("none");
-    $("#icon").css({left: "calc(23% + 4px)"});
+    $("#icon").css({left: "24%"});
   call_timer();
 }
 
